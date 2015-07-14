@@ -1,2 +1,2 @@
-BasketballPass 416 240 24
-BlowingBubbles 416 240 0
+BasketballPass_416x240_50 416 240 24
+BlowingBubbles_416x240_50 416 240 0
