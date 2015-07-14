@@ -3,13 +3,19 @@ import sys
 projectFile = sys.argv[1]
 GOPSize = sys.argv[2]
 
-result = open("concatVideos" + projectFile + ".yuv", 'wb')
-p = open(proj + ".txt", "r")
+out = "../../Results/concatVideos_" + projectFile
+r = open(out + ".yuv", 'wb')
+p = open(projectFile + ".txt", "r")
 lines = p.readlines()
 p.close()
 
 	
-def copyGOP(video, h, w, startFrame):
+def copyGOP(video, startFrame):
+	size = video.split("_")
+	size = size[1].split("x")
+	h = int(size[0])
+	w = int(size[1])
+	
 	f = open("../../origCfP/" + video + ".yuv", 'rb')
 	frame = 3 * (int(h) * int(w)) / 2 #YCrCb
 	
@@ -17,13 +23,13 @@ def copyGOP(video, h, w, startFrame):
 		f.read(frame)
 	for frames in range(int(startFrame), (int(startFrame) + int(GOPSize))): #reads and saves the GOP
 		YUV = f.read(frame)
-		result.write(YUV)
+		r.write(YUV)
 		
 	f.close()
 	
 for line in lines:
 	line = line.split()
 	print line
-	copyGOP(line[0], line[1], line[2], line[3])
+	copyGOP(line[0], line[1])
 
-result.close()
+r.close()

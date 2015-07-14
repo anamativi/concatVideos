@@ -1,0 +1,4 @@
+BasketballPass_416x240_50 24
+BlowingBubbles_416x240_50 0
+BQSquare_416x240_60 40
+RaceHorses_416x240_30 16
