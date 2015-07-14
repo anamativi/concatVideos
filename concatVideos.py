@@ -1,9 +1,13 @@
 import sys
+import os
+import time
 
 projectFile = sys.argv[1]
 GOPSize = sys.argv[2]
 
-out = "../../Results/concatVideos_" + projectFile
+out = time.strftime("%y_%m") + "/" + time.strftime("%d") + "/" + "concatVideos_" + projectFile
+os.system("mkdir --p " + out) #creates results folder, if it insnt there already
+
 r = open(out + ".yuv", 'wb')
 p = open(projectFile + ".txt", "r")
 lines = p.readlines()
